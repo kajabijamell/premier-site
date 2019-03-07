@@ -1,0 +1,27 @@
+<!-- Block Variables -->
+{% assign b-ID            = block.id %}
+{% assign b-BgColor       = block.settings.background_color | default: "#fff" %}
+{% assign b-TextColor     = block.settings.text_color | default: "" %}
+{% assign b-AutoTextColor = b-BgColor | color_scheme_class %}
+{% assign b-AccentColor   = block.settings.accent_color | default: "" %}
+{% assign b-Content       = block.settings.content%}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-bgColor   = 'background_color' | settings_id: section: section, block: block %}
+{% assign kjb-b-content   = 'content' | settings_id: section: section, block: block %}
+
+<style>
+  .panel--{{b-ID}} {
+    background: {{ b-BgColor }};
+    color: {{ b-TextColor }};
+  }
+</style>
+
+<div class="panel panel--{{ b-AutoTextColor }} panel--{{ b-ID }}" kjb-settings-id="{{ kjb-b-bgColor }}">
+  <div class="panel__body">
+    <div class="panel__block" kjb-settings-id="{{ kjb-b-content }}">
+      {{ b-Content }}
+    </div>
+    {% include "cta_block" %}
+  </div>
+</div>

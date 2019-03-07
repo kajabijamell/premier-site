@@ -1,0 +1,63 @@
+{% include "panel_style", bgColor: "#f2f3f6" %}
+
+<!-- Block Variables -->
+{% assign b-Form            = current_site.find_form[block.settings.form] %}
+{% assign b-LabelStyle      = block.settings.style %}
+{% if b-LabelStyle == "label" %}
+  {% assign use_label       = true %}
+  {% assign use_placeholder = false %}
+{% else %}
+  {% assign use_label = false %}
+  {% assign use_placeholder = true %}
+{% endif %}
+{% assign b-Heading         = block.settings.heading %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-BgColor     = 'background_color' | settings_id: section: section, block: block %}
+{% assign kjb-b-Heading     = 'heading' | settings_id: section: section, block: block %}
+{% assign kjb-b-Form        = 'form' | settings_id: section: section, block: block %}
+
+
+<style>
+  .panel--{{ p-ID }} {
+    margin-top: 2rem;
+  }
+</style>
+
+<div class="panel panel--large panel--{{ p-AutoTextColor }} panel--{{ p-ID }}" kjb-settings-id="{{ kjb-b-BgColor }}">
+  <div class="panel__body">
+    <div class="panel__block" kjb-settings-id="{{ kjb-b-Heading }}">
+      {{ b-Heading }}
+    </div>
+    <div class="panel__block" kjb-settings-id="{{ kjb-b-Form }}">
+      {% form b-Form %}
+        {% assign btnId        = 'btn_text' | settings_id: section: section, block: block %}
+        {% assign btnText      = block.settings.btn_text  %}
+        {% assign btnColor     = block.settings.btn_background_color | default: settings.color_primary %}
+        {% assign btnTextColor = block.settings.btn_text_color | default: settings.text_color_light %}
+        {% assign btnStyle     = block.settings.btn_style  %}
+        {% assign btnWidth     = block.settings.btn_width  %}
+
+        <style>
+          /*============================================================================
+            #Individual CTA Style
+          ==============================================================================*/
+          .btn--{{ btnId }}.btn--solid {
+            background: {{ btnColor }};
+            border-color: {{ btnColor }};
+            color: {{ btnTextColor }};
+          }
+          .btn--{{ btnId }}.btn--outline {
+            border-color: {{ btnColor }};
+            color: {{ btnColor }};
+          }
+        </style>
+        <input type="hidden" name="thank_you_url" value="{{ section.settings.thank_you_url }}">
+        {% for field in b-Form.fields %}
+          {{ field | form_input: class: "form-group", input_class: "form-control", label: use_label, placeholder: use_placeholder }}
+        {% endfor %}
+        <button class="btn btn--{{ btnId }} btn--{{ btnWidth }} btn--{{ btnStyle }} btn-form" id="form-button" type="submit" kjb-settings-id="{{ btnId }}">{{ btnText }}</button>
+      {% endform %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<!-- Block Variables -->
+{% assign b-Video = current_site.find_video[block.settings.video] %}
+{% assign b-Img = block.settings.image | image_picker_url: 'placeholder.png' %}
+{% assign b-AutoPlay = block.settings.autoplay %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Video = 'video' | settings_id: section: section, block: block %}
+
+<div class="video" kjb-settings-id="{{ kjb-b-Video }}">
+  <div class="video__wrapper">
+    {{ b-Video | wistia_video: player_color: settings.color_primary, auto_play: b-AutoPlay, still_url: b-Img, playerPreference: "html5" }}
+  </div>
+</div>

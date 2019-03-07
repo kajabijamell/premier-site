@@ -1,0 +1,36 @@
+{% assign s-ID            = section.id %}
+{% assign s-BgImage       = section.settings.bg_image | image_picker_url: defaultImg %}
+{% assign s-BgVideo       = current_site.find_video[section.settings.bg_video] %}
+{% assign s-BgVideoID     = s-BgVideo.wistia_id | default: defaultVideo %}
+{% assign s-BgColor       = section.settings.overlay | default: bgColor %}
+{% assign s-AutoTextColor = s-BgColor | color_scheme_class %}
+{% assign s-TextColor     = section.settings.text_color %}
+{% assign s-Spacing       = section.settings.spacing %}
+{% assign s-VertAlign     = vertAlign %}
+{% if s-Spacing == "full" %}
+  {% assign s-SplashWrapper = "splash-wrapper" %}
+  {% assign s-Splash        = "splash" %}
+{% else %}
+  {% assign s-SplashWrapper = "" %}
+  {% assign s-Splash        = "" %}
+{% endif %}
+
+<style>
+  {% if section.settings.type != "video" %}
+    .background-image--{{ s-ID }} {
+      background-image: url({{ s-BgImage }});
+    }
+  {% endif %}
+  .section--{{ s-ID }} {
+    /*============================================================================
+      #Background Color Override
+    ==============================================================================*/
+    background: {{ s-BgColor }};
+    {% if s-TextColor != "" %}
+      /*============================================================================
+        #Text Color Override
+      ==============================================================================*/
+      color: {{ s-TextColor }};
+    {% endif %}
+  }
+</style>

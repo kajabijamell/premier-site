@@ -1,0 +1,47 @@
+{% paginate blog_posts by 10 %}
+  {% for blog_post in paginate.collection %}
+    {% include "blog_post_preview" %}
+  {% endfor %}
+  {% if paginate.pages > 1 %}
+    {% include "pagination" %}
+  {% endif %}
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog Listing Body",
+    "elements": [
+      {
+        "type": "checkbox",
+        "label": "Show Date",
+        "id": "show_date",
+        "default": "true"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Tags",
+        "id": "show_tags",
+        "default": "true"
+      },
+      {
+        "type": "color",
+        "label": "Video Player Color",
+        "id": "video_player_color",
+        "allow_blank": true
+      },
+      {
+        "type": "text",
+        "default": "",
+        "label": "Truncate At",
+        "id": "truncate",
+        "info": "Insert a custom number if you would like to override the standard 1000 character truncation."
+      },
+      {
+        "type": "text",
+        "label": "Language Read More",
+        "id": "read_more",
+        "default": "Continue Reading..."
+      }
+    ]
+  }
+{% endschema %}

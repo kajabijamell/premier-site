@@ -1,0 +1,29 @@
+<div class="auth__thank-you">
+  {% if offer.thank_you_body %}
+  {{ offer.thank_you_body }}
+  {% else %}
+    {% if editor %}
+      <div class="editor-null">
+        <h4>You do not have any thank you text associated with this offer.</h4>
+        <p>
+          You can add thank you text by going to the checkout tab on this offer. This message will not show to your users.
+        </p>
+      </div>
+    {% endif %}
+  {% endif %}
+  <a href="/" class="auth__thank-you--link" kjb-settings-id="{{ 'thank_you_link' | settings_id: section: section }}">{{ section.settings.thank_you_link }}</a>
+</div>
+
+{% schema %}
+  {
+    "name": "Thank You",
+    "elements": [
+      {
+        "type": "text",
+        "label": "Thank You Link",
+        "id": "thank_you_link",
+        "default": "BACK TO HOME"
+      }
+    ]
+  }
+{% endschema %}

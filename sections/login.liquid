@@ -1,0 +1,156 @@
+{% layout "auth" %}
+{% if section.settings.show_image %}
+  <div class="auth__img" kjb-settings-id="{{ 'image' | settings_id: section: section }}">
+    <img src="{{ section.settings.image | image_picker_url: 'placeholder.png'}}" />
+  </div>
+{% endif %}
+<div class="panel auth__box" kjb-settings-id="{{ 'show_image' | settings_id: section: section }}">
+  <div class="panel__body">
+    <h1 class="auth__title" kjb-settings-id="{{ 'login_text' | settings_id: section: section }}">{{ section.settings.login_text }}</h1>
+    {% form 'new_member_session', current_site_user %}
+      {% if form.notice %}
+        <div class="auth__message alert alert--danger">{{ form.notice }}</div>
+      {% endif %}
+      {% if form.errors.messages['form'] %}
+        <div class="auth__message alert alert--danger">{{ form.errors.messages['form'] }}</div>
+      {% endif %}
+      <div class="form-group">
+        <label class="auth__label" for="member_email" kjb-settings-id="{{ 'email' | settings_id: section: section }}">{{ section.settings.email }}</label>
+        <input class="form-control auth__field" spellcheck="false" autocorrect="off" autofocus="autofocus" type="text" name="member[email]" id="member_email" value="{{form.email}}" />
+      </div>
+      <div class="form-group">
+        <label class="auth__label" for="member_password" kjb-settings-id="{{ 'password' | settings_id: section: section }}">{{ section.settings.password }}</label>
+        <input class="form-control auth__field" type="password" name="member[password]" id="member_password" />
+      </div>
+      <div class="form-group">
+        <label kjb-settings-id="{{ 'remember_me' | settings_id: section: section }}">
+          <input class="boolean optional" type="checkbox" value="1" name="member[remember_me]" id="member_remember_me"/> <span class="auth__label">{{ section.settings.remember_me }}</span>
+        </label>
+      </div>
+      {% assign btnText      = section.settings.btn_text  %}
+      {% assign btnColor     = section.settings.btn_background_color | default: settings.color_primary %}
+      {% assign btnTextColor = section.settings.btn_text_color | default: settings.text_color_light %}
+      {% assign btnStyle     = section.settings.btn_style  %}
+      {% assign btnWidth     = section.settings.btn_width  %}
+      {% assign btnSize      = section.settings.btn_size  %}
+
+      <style>
+        .btn--solid {
+          background: {{ btnColor }};
+          border-color: {{ btnColor }};
+          color: {{ btnTextColor }};
+        }
+        .btn--outline {
+          border-color: {{ btnColor }};
+          color: {{ btnColor }};
+        }
+      </style>
+      <input class="btn btn--{{ btnWidth }} btn--{{ btnStyle }} btn--{{ btnSize }}" type="submit" name="commit" value="{{ btnText }}" kjb-settings-id="{{ 'btn_text' | settings_id: section: section }}">
+    {% endform %}
+  </div>
+</div>
+<div class="auth__link">
+  <a href="/password/new" kjb-settings-id="{{ 'forgot_password' | settings_id: section: section }}">{{ section.settings.forgot_password }}</a>
+</div>
+
+{% schema %}
+  {
+    "name": "Login",
+    "elements": [
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show Image",
+        "default": "false"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "width": 720,
+        "height": 410,
+        "info": "Suggested dimensions: 720 × 410"
+      },
+      {
+        "type": "text",
+        "label": "Login Text",
+        "id": "login_text",
+        "default": "Sign in to your account"
+      },
+      {
+        "type": "text",
+        "label": "Email Text",
+        "id": "email",
+        "default": "Email"
+      },
+      {
+        "type": "text",
+        "label": "Password Text",
+        "id": "password",
+        "default": "Password"
+      },
+      {
+        "type": "text",
+        "label": "Remember Me Text",
+        "id": "remember_me",
+        "default": "Remember Me"
+      },
+      {
+        "type": "text",
+        "label": "Forgot Password Text",
+        "id": "forgot_password",
+        "default": "Forgot Password"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Sign In"
+      },
+      {
+        "type": "radio",
+        "id": "btn_style",
+        "label": "Button Style",
+        "default": "solid",
+        "options": [
+          { "label": "Solid", "value": "solid" },
+          { "label": "Outline", "value": "outline" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_size",
+        "label": "Button Size",
+        "default": "med",
+        "options": [
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "med" },
+          { "label": "Large", "value": "large" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_width",
+        "label": "Button Width",
+        "default": "block",
+        "options": [
+          { "label": "Auto", "value": "auto" },
+          { "label": "Full Width", "value": "block" }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "btn_background_color",
+        "label": "Button Color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "id": "btn_text_color",
+        "label": "Button Text Color",
+        "allow_blank": true,
+        "info": "For solid buttons only"
+      }
+    ]
+  }
+{% endschema %}

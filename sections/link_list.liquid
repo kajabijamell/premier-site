@@ -1,0 +1,74 @@
+{% include "section_style", bgColor: settings.color_dark, vertAlign: "middle" %}
+
+<div class="background-image background-image--{{ s-ID }}">
+  <div id="" class="section section--link_list section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-AutoTextColor }} section--{{ s-ID }}" kjb-settings-id="{{ kjb-Background }}">
+    <div class="container">
+      <nav class="nav nav-inline text-xs-{{ section.settings.alignment }}" kjb-settings-id="{{ 'link_list' | settings_id: section: section }}">
+        {% for link in current_site.link_lists[section.settings.link_list].links %}
+          <a class="nav-link" href="{{ link.url }}">{{ link.name }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Link List",
+    "elements": [
+      {
+        "type": "link_list",
+        "id": "link_list",
+        "label": "Link List",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "Section Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "background_color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "allow_blank": true,
+        "info": "Text color will change automatically based on the brightness of your background color. Use this setting if you would like to override with a custom color."
+      },
+      {
+        "type": "radio",
+        "id": "alignment",
+        "label": "Text Alignment",
+        "default": "center",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing",
+        "default": "small",
+        "options": [
+          { "label": "Extra Small", "value": "xs-small" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Link List",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

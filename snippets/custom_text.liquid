@@ -1,0 +1,10 @@
+<!-- Block Variables -->
+{% assign b-Text      = block.settings.text %}
+{% assign b-Alignment = block.settings.alignment %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Text  = 'text' | settings_id: section: section, block: block %}
+
+<div kjb-settings-id="{{ kjb-b-Text }}" style="text-align: {{ b-Alignment }}">
+  {{ b-Text }}
+</div>

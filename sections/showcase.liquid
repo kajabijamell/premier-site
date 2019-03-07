@@ -1,0 +1,217 @@
+{% include "section_style", bgColor: "rgba(0,0,0,.5)", defaultImg: "showcase.jpg", vertAlign: "middle" %}
+
+<div class="background-image background-image--{{ s-ID }}">
+  <div id="" class="section section--showcase section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-AutoTextColor }} section--{{ s-ID }}" kjb-settings-id="{{ kjb-Background }}">
+    <div class="container">
+      <div class="row">
+        {% if section.settings.show_image %}
+          {% if section.settings.position == "Right" %}
+            <div class="col-sm-6">
+              {% include "showcase_text" %}
+            </div>
+            <div class="col-sm-5 offset-sm-1">
+              <img src="{{ section.settings.image | image_picker_url: 'showcase_img.png'}}" class="img-fluid" kjb-settings-id="{{ 'image' | settings_id: section: section }}"/>
+            </div>
+          {% else %}
+            <div class="col-sm-5">
+              <img src="{{ section.settings.image | image_picker_url: 'showcase_img.png'}}" class="img-fluid" kjb-settings-id="{{ 'image' | settings_id: section: section }}"/>
+            </div>
+            <div class="col-sm-6 offset-sm-1">
+              {% include "showcase_text" %}
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="col-sm-12">
+            {% include "showcase_text" %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Showcase",
+    "blocks": [
+      {
+        "type": "cta",
+        "name": "Call To Action",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Call To Action"
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "CTA Text",
+            "default": "Call To Action"
+          },
+          {
+            "type": "action",
+            "id": "btn_action",
+            "label": "CTA Action",
+            "two_step": true,
+            "default": "http://www.kajabi.com"
+          },
+          {
+            "type": "checkbox",
+            "id": "btn_target",
+            "label": "Open In New Window",
+            "default": "false"
+          },
+          {
+            "type": "radio",
+            "id": "btn_style",
+            "label": "CTA Style",
+            "default": "solid",
+            "options": [
+              { "label": "Solid", "value": "solid" },
+              { "label": "Outline", "value": "outline" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_size",
+            "label": "CTA Size",
+            "default": "med",
+            "options": [
+              { "label": "Small", "value": "small" },
+              { "label": "Medium", "value": "med" },
+              { "label": "Large", "value": "large" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_width",
+            "label": "Button Width",
+            "default": "auto",
+            "options": [
+              { "label": "Auto", "value": "auto" },
+              { "label": "Full Width", "value": "block" }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "btn_background_color",
+            "label": "Button Color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "id": "btn_text_color",
+            "label": "Button Text Color",
+            "allow_blank": true,
+            "info": "For solid buttons only"
+          },
+          {
+            "type": "text",
+            "id": "btn_Reveal",
+            "label": "CTA Timed Reveal",
+            "default": "0",
+            "info": "Use seconds. (For example, 5 minutes x 60 seconds = 300 seconds). Leave at 0 to disable timed reveal."
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "rich_text",
+        "label": "Text",
+        "id": "text",
+        "default": "<h2>Showcase Section</h2><p>A Showcase is an easy way to make a product or service stand out from the rest of the page. Grab visitor's attention with exciting background imagery and a clear Call To Action.</p>"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show Image",
+        "default": "true"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "width": 1000,
+        "height": 1000,
+        "info": "Suggested dimensions: 898 × 898"
+      },
+      {
+        "type": "header",
+        "content": "Section Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_img",
+        "label": "Use Background Image",
+        "default": "true"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image",
+        "info": "Suggested dimensions: 2880 × 1200"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "background_color",
+        "allow_blank": true,
+        "info": "Will be used as overlay if settings for background image selected. Use Opacity slider."
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "allow_blank": true,
+        "info": "Text color will change automatically based on the brightness of your background color. Use this setting if you would like to override with a custom color."
+      },
+      {
+        "type": "radio",
+        "label": "Image Position",
+        "id": "position",
+        "default": "Right",
+        "options": [
+          { "label": "Right", "value": "Right" },
+          { "label": "Left", "value": "Left" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "alignment",
+        "label": "Text Alignment",
+        "default": "left",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing",
+        "default": "medium",
+        "options": [
+          { "label": "Extra Small", "value": "xs-small" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ]
+      }
+    ],
+    "presets": [
+        {
+            "name": "Showcase",
+            "category": "Content",
+            "blocks": [
+                { "type": "cta", "settings": { } }
+            ]
+        }
+    ]
+  }
+{% endschema %}

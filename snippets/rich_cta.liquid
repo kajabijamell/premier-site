@@ -1,0 +1,21 @@
+{% include "panel_style", bgColor: "#fff" %}
+{% assign p-BorderColor   = block.settings.border_color | default: "#e1e1e1" %}
+<style>
+  .panel--{{p-ID}} {
+    border: 1px solid {{ p-BorderColor }};
+    text-align:center;
+    margin-top: 2rem;
+  }
+  .panel--{{p-ID}} .btn {
+    margin-top: 2rem;
+  }
+</style>
+
+<div class="panel panel--{{ p-AutoTextColor }} panel--{{ p-ID }}" kjb-settings-id="{{ 'background_color' | settings_id: section: section, block: block }}">
+  <div class="panel__body">
+    <div class="panel__block" kjb-settings-id="{{ 'content' | settings_id: section: section, block: block }}">{{ block.settings.content }}</div>
+    {% if block.settings.show_cta %}
+      {% include "cta_block" %}
+    {% endif %}
+  </div>
+</div>

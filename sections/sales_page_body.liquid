@@ -1,0 +1,96 @@
+<div class="panel panel--{{ b-AutoTextColor }} panel--{{ b-ID }}">
+  <div class="panel__body fluid-video" kjb-settings-id="{{ 'video_player_color' | settings_id: section: section }}">
+    {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
+    {% include "video" with sales_page.video, color: videoColor, thumbnail: sales_page.thumbnail_url %}
+    <h1>{{ sales_page.title }}</h1>
+    {{ sales_page.body }}
+  </div>
+</div>
+{% include "offer_pricing" %}
+
+{% schema %}
+  {
+    "name": "Sales Page Body",
+    "elements": [
+      {
+        "type": "color",
+        "label": "Video Player Color",
+        "id": "video_player_color",
+        "allow_blank": true
+      },
+      {
+        "type": "header",
+        "content": "Offer Pricing",
+        "style": "subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pricing",
+        "label": "Show Pricing Options",
+        "default": "false"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "title",
+        "default": "Pricing Options"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Purchase Offer"
+      },
+      {
+        "type": "radio",
+        "id": "btn_style",
+        "label": "Button Style",
+        "default": "solid",
+        "options": [
+          { "label": "Solid", "value": "solid" },
+          { "label": "Outline", "value": "outline" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_size",
+        "label": "Button Size",
+        "default": "med",
+        "options": [
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "med" },
+          { "label": "Large", "value": "large" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_width",
+        "label": "Button Width",
+        "default": "auto",
+        "options": [
+          { "label": "Auto", "value": "auto" },
+          { "label": "Full Width", "value": "block" }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "btn_background_color",
+        "label": "Button Color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "id": "btn_text_color",
+        "label": "Button Text Color",
+        "allow_blank": true,
+        "info": "For solid buttons only"
+      },
+      {
+        "type": "color",
+        "label": "Selected Color Override",
+        "id": "selected_color",
+        "allow_blank": true
+      }
+    ]
+  }
+{% endschema %}

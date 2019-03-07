@@ -1,0 +1,129 @@
+{% if sales_pages.size > 0 %}
+  <div class="row">
+    {% include "sales_page_tags" %}
+  </div>
+  <div class="row">
+    {% paginate sales_pages by 12 %}
+      {% for sales_page in paginate.collection %}
+        <div class="col-lg-4 col-md-6">
+          {% include "sales_page_store" %}
+        </div>
+      {% endfor %}
+      {% if paginate.pages > 1 %}
+        <div class="col-xs-12">
+          {% include "pagination" %}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Sales Pages",
+    "elements": [
+      {
+        "type": "text",
+        "label": "All Offers Tag Text",
+        "id": "sales_tag_all",
+        "default": "All Offers"
+      },
+      {
+        "type": "color",
+        "label": "Tag Color Override",
+        "id": "text_color_tag",
+        "allow_blank": true
+      },
+      {
+        "type": "header",
+        "content": "Sales Page Card Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "radio",
+        "id": "alignment",
+        "label": "Text Alignment",
+        "default": "left",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "text",
+        "default": "",
+        "label": "Truncate At",
+        "id": "truncate",
+        "info": "Insert a custom number if you would like to override the standard 120 character truncation."
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Learn More"
+      },
+      {
+        "type": "radio",
+        "id": "btn_style",
+        "label": "Button Style",
+        "default": "solid",
+        "options": [
+          { "label": "Solid", "value": "solid" },
+          { "label": "Outline", "value": "outline" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_size",
+        "label": "Button Size",
+        "default": "small",
+        "options": [
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "med" },
+          { "label": "Large", "value": "large" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "btn_width",
+        "label": "Button Width",
+        "default": "auto",
+        "options": [
+          { "label": "Auto", "value": "auto" },
+          { "label": "Full Width", "value": "block" }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "btn_background_color",
+        "label": "Button Color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "id": "btn_text_color",
+        "label": "Button Text Color",
+        "allow_blank": true,
+        "info": "For solid buttons only"
+      },
+      {
+        "type": "header",
+        "content": "Offer Price",
+        "style": "subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_price",
+        "label": "Show First Offer Price",
+        "default": "false"
+      },
+      {
+        "type": "color",
+        "id": "offer_color",
+        "label": "Price Color",
+        "allow_blank": true
+      }
+    ]
+  }
+{% endschema %}

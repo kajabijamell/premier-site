@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title and description ================================================== -->
+    {% csrf_meta_tags %}
+    <title>
+      {% if page_title %}
+        {{ page_title }}
+      {% else %}
+        {{ current_site.title }}
+      {% endif %}
+    </title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+
+    <!-- Helpers ================================================== -->
+    {% include "social_meta_tags" %}
+    <link href="{{ 'favicon.png' | asset_url }}?v=2" rel="shortcut icon" />
+    <link rel="canonical" href="{{ canonical_url }}" />
+
+    <!-- CSS ================================================== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    {% if settings.font_family ==  settings.heading_font_family%}
+      <link href="//fonts.googleapis.com/css?family={{ settings.font_family | replace: ' ', '+' }}:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    {% else %}
+      <link href="//fonts.googleapis.com/css?family={{ settings.font_family | replace: ' ', '+' }}:400,700,400italic,700italic|{{ settings.heading_font_family | replace: ' ', '+' }}:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    {% endif %}
+    {{ 'core.css' | kajabi_asset_url | stylesheet_tag }}
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+    {{ 'overrides.css' | asset_url | stylesheet_tag }}
+
+    <!-- Full Bleed Or Container ================================================== -->
+    {% if settings.full_bleed %}
+      <style>
+        .container--main {
+          max-width: 100%;
+        }
+      </style>
+    {% endif %}
+
+    <!-- Header hook ================================================== -->
+    {% content_for_header %}
+  </head>
+  <body>
+    <div class="container container--main">
+      <div class="content-wrap">
+        {% section "header" %}
+        {% include "alert_messages" %}
+        {{ content_for_layout }}
+        {% section "footer" %}
+      </div>
+    </div>
+    {% if template != "library" %}
+      {% section "pop_exit" %}
+    {% endif %}
+    {% section "pop_two_step" %}
+
+    <!-- Javascripts ================================================== -->
+    {{ 'core.js' | kajabi_asset_url | script_tag }}
+    <script charset='ISO-8859-1' src='https://fast.wistia.com/assets/external/E-v1.js'></script>
+    <script charset='ISO-8859-1' src='https://fast.wistia.com/labs/crop-fill/plugin.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    {{ 'scripts.js' | asset_url | script_tag }}
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    <script id="dsq-count-scr" src="//{{ settings.short_code }}.disqus.com/count.js" async=""></script>
+  </body>
+</html>
