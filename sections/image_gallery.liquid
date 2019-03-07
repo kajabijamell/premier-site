@@ -1,0 +1,96 @@
+{% include "section_style", bgColor: "#fff", vertAlign: "top" %}
+
+<div id="" class="section section--gallery section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-AutoTextColor }} section--{{ s-ID }}">
+  <div class="row">
+    {% for block in section.blocks %}
+      {% if section.blocks.size == 1 %}
+        <div class="col-sm-12">
+          {% include "gallery_image" %}
+        </div>
+      {% elsif section.blocks.size == 2 %}
+        <div class="col-sm-6">
+          {% include "gallery_image" %}
+        </div>
+      {% elsif section.blocks.size == 3 %}
+        <div class="col-sm-4">
+          {% include "gallery_image" %}
+        </div>
+      {% else %}
+        <div class="col-sm-3">
+          {% include "gallery_image" %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image Gallery",
+    "blocks": [
+      {
+        "type": "gallery_image",
+        "name": "Gallery Image",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Gallery Image"
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "fit": "max",
+            "width": 2880,
+            "height": 2880,
+            "info": "For best results use images of the same size. Suggested dimensions: 2160 × 2160"
+          },
+          {
+            "type": "action",
+            "id": "img_action",
+            "label": "Image Action",
+            "two_step": true,
+            "default": ""
+          },
+          {
+            "type": "checkbox",
+            "id": "link_target",
+            "label": "Open In New Window",
+            "default": "false"
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "background_color",
+        "allow_blank": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Gallery",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "gallery_image"
+          },
+          {
+            "type": "gallery_image"
+          },
+          {
+            "type": "gallery_image"
+          },
+          {
+            "type": "gallery_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

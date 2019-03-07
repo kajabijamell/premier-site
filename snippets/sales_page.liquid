@@ -1,0 +1,41 @@
+{% assign block_color = block.settings.background_color | default: "#fff" %}
+{% assign block_text_color = block.settings.text_color %}
+<div class="card section--{{ block_color | color_scheme_class }}" style="text-align: {{ section.settings.alignment }};background: {{ block_color }};color:{{ block_text_color }};" kjb-settings-id="{{ 'background_color' | settings_id: section: section, block: block }}">
+  <a href="{{ sales_page.url }}">
+    {% if sales_page.thumbnail_url %}
+      <img class="card-img-top" src="{{ sales_page.thumbnail_url }}"/>
+    {% else %}
+      <img class="card-img-top" src="{{ "placeholder.png" | asset_url }}"/>
+    {% endif %}
+  </a>
+  <div class="card-block">
+    <h4 class="card-title">{{ sales_page.title }}</h4>
+    {% if block.settings.show_price %}
+      <h5 kjb-settings-id="{{ 'show_price' | settings_id: section: section, block: block }}">{{ sales_page.offers.first | display_price }}</h5>
+    {% endif %}
+    <p class="card-text">{{ sales_page.body | strip_html | truncate: 120 }}</p>
+    {% assign btnId        = 'btn_text' | settings_id: section: section, block: block %}
+    {% assign btnText      = block.settings.btn_text  %}
+    {% assign btnColor     = block.settings.btn_background_color | default: settings.color_primary %}
+    {% assign btnTextColor = block.settings.btn_text_color | default: settings.text_color_light %}
+    {% assign btnStyle     = block.settings.btn_style  %}
+    {% assign btnWidth     = block.settings.btn_width  %}
+    {% assign btnSize      = block.settings.btn_size  %}
+
+    <style>
+      /*============================================================================
+        #Individual CTA Style
+      ==============================================================================*/
+      #{{ btnId }}.btn--solid {
+        background: {{ btnColor }};
+        border-color: {{ btnColor }};
+        color: {{ btnTextColor }};
+      }
+      #{{ btnId }}.btn--outline {
+        border-color: {{ btnColor }};
+        color: {{ btnColor }};
+      }
+    </style>
+    <a href="{{ sales_page.url }}" class="btn btn--{{ btnWidth }} btn--{{ btnStyle }} btn--{{ btnSize }} btn-cta" id="{{ btnId }}" kjb-settings-id="{{ btnId }}">{{ btnText }}</a>
+  </div>
+</div>

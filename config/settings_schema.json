@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Favicon",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "image",
+        "id": "favicon.png",
+        "label": "Favicon Image",
+        "fit": "crop",
+        "width": 32,
+        "height": 32,
+        "info": "Must be a 32x32 PNG file. Transparency is supported. Please allow some time for favicon to change."
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Typography"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Dark Font Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "text_color_light",
+        "label": "Light Font Color",
+        "default": "#fff"
+      },
+      {
+        "type": "font_select",
+        "label": "Base Font Family",
+        "id": "font_family",
+        "default": "Open Sans",
+        "preset": "google_fonts",
+        "options": []
+      },
+      {
+        "type": "font_select",
+        "label": "Heading Font Family",
+        "id": "heading_font_family",
+        "default": "Montserrat",
+        "preset": "google_fonts",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "Color Scheme",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Color Scheme"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary",
+        "default": "#2e91fc"
+      },
+      {
+        "type": "color",
+        "id": "color_offset",
+        "label": "Offset",
+        "default": "#f9f9f9"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark",
+        "default": "#30373e"
+      },
+      {
+        "type": "color",
+        "id": "color_darker",
+        "label": "Darker",
+        "default": "#272d34"
+      },
+      {
+        "type": "color",
+        "id": "color_page_bg",
+        "label": "Page Background",
+        "default": "#f9f9f9"
+      }
+    ]
+  },
+  {
+    "name": "Message Colors",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Message Colors"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Success",
+        "default": "#1abc9c"
+      },
+      {
+        "type": "color",
+        "id": "color_info",
+        "label": "Info",
+        "default": "#34495e"
+      },
+      {
+        "type": "color",
+        "id": "color_warning",
+        "label": "Warning",
+        "default": "#f39c12"
+      },
+      {
+        "type": "color",
+        "id": "color_danger",
+        "label": "Danger",
+        "default": "#e74c3c"
+      }
+    ]
+  },
+  {
+    "name": "Password Recovery",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Password Recovery"
+      },
+      {
+        "type": "text",
+        "id": "recover_text",
+        "label": "Recover Text",
+        "default": "Recover Password"
+      },
+      {
+        "type": "text",
+        "id": "email_text",
+        "label": "Email Text",
+        "default": "Email"
+      },
+      {
+        "type": "text",
+        "id": "recovery_text",
+        "label": "Recovery Text",
+        "default": "Send Recovery Info"
+      },
+      {
+        "type": "text",
+        "id": "login_text",
+        "label": "Login Text",
+        "default": "Login"
+      }
+    ]
+  },
+  {
+    "name": "Password Reset",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Password Reset"
+      },
+      {
+        "type": "text",
+        "id": "reset_text",
+        "label": "Reset Text",
+        "default": "Create new password"
+      },
+      {
+        "type": "text",
+        "id": "new_password",
+        "label": "New Password Text",
+        "default": "Enter New Password"
+      },
+      {
+        "type": "text",
+        "id": "confirm_password",
+        "label": "Confirm Password Text",
+        "default": "Confirm Password"
+      },
+      {
+        "type": "text",
+        "id": "reset_btn",
+        "label": "Reset Button Text",
+        "default": "Submit"
+      }
+    ]
+  },
+  {
+    "name": "Disqus Comments",
+    "elements": [
+      {
+        "type": "header",
+        "content": "Disqus Comments"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Disqus Comments",
+        "id": "show_comments",
+        "default": "false"
+      },
+      {
+        "type": "text",
+        "id": "short_code",
+        "label": "Disqus Short Code",
+        "default": "",
+        "info": "Learn all about how to sign up for Disqus and where to find your short code in this help article. [Click Here](blog_comments)."
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+<div class="item testimonial" kjb-settings-id="{{ 'text' | settings_id: section: section, block: block }}">
+  <p class="testimonial__text" kjb-settings-id="{{ 'text' | settings_id: section: section, block: block }}">"{{ block.settings.text }}"</p>
+  {% if block.settings.show_image %}
+    <img src="{{ block.settings.image | image_picker_url: 'testimonial.png'}}" class="img-fluid img-circle testimonial__image" kjb-settings-id="{{ 'image' | settings_id: section: section, block: block }}"/>
+  {% endif %}
+  <h4 class="testimonial__name" kjb-settings-id="{{ 'name' | settings_id: section: section, block: block }}">
+    {{ block.settings.name }}<br>
+    <i class="testimonial__title" kjb-settings-id="{{ 'title' | settings_id: section: section, block: block }}">{{ block.settings.title }}</i>
+  </h4>
+</div>

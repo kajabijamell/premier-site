@@ -1,0 +1,210 @@
+{% include "section_style_hero", bgColor: "rgba(0,0,0,.5)", vertAlign: "middle", defaultImg: "hero.jpg", defaultVideo: "aifhr9jyfk" %}
+
+{% if section.settings.type == "video" %}
+  <div class="hero-background background-image background-image--{{ s-ID }} {{ s-SplashWrapper }}">
+    <div id="wistia_{{ s-BgVideoID }}" class="wistia_embed backgroundVideo" data-src="{{ s-BgVideoID }}" data-img="{{ s-BgImage }}"></div>
+{% else %}
+  <div class="hero-background background-image background-image--{{ s-ID }} {{ s-SplashWrapper }}">
+{% endif %}
+  <div class="section section--hero section--{{ s-AutoTextColor }} section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-ID }} {{ s-Splash }}" kjb-settings-id="{{ 'overlay' | settings_id: section: section }}">
+    <div class="container">
+      <div class="row">
+        {% if section.settings.alignment == "left" %}
+          <div class="col-sm-6 text-xs-left btn__spacing btn__spacing--left">
+            {% include "hero_text" %}
+          </div>
+          <div class="col-sm-6">
+          </div>
+        {% elsif section.settings.alignment == "right" %}
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6 text-xs-left btn__spacing btn__spacing--left">
+            {% include "hero_text" %}
+          </div>
+        {% else %}
+          <div class="col-sm-8 btn__spacing btn__spacing--center">
+            {% include "hero_text" %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "blocks": [
+      {
+        "type": "hero_cta",
+        "name": "Call To Action",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Call To Action"
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "CTA Text",
+            "default": "Call To Action"
+          },
+          {
+            "type": "action",
+            "id": "btn_action",
+            "label": "CTA Action",
+            "two_step": true,
+            "default": "http://www.kajabi.com"
+          },
+          {
+            "type": "checkbox",
+            "id": "btn_target",
+            "label": "Open In New Window",
+            "default": "false"
+          },
+          {
+            "type": "radio",
+            "id": "btn_style",
+            "label": "CTA Style",
+            "default": "solid",
+            "options": [
+              { "label": "Solid", "value": "solid" },
+              { "label": "Outline", "value": "outline" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_size",
+            "label": "CTA Size",
+            "default": "med",
+            "options": [
+              { "label": "Small", "value": "small" },
+              { "label": "Medium", "value": "med" },
+              { "label": "Large", "value": "large" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_width",
+            "label": "Button Width",
+            "default": "auto",
+            "options": [
+              { "label": "Auto", "value": "auto" },
+              { "label": "Full Width", "value": "block" }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "btn_background_color",
+            "label": "Button Color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "id": "btn_text_color",
+            "label": "Button Text Color",
+            "allow_blank": true,
+            "info": "For solid buttons only"
+          },
+          {
+            "type": "text",
+            "id": "btn_Reveal",
+            "label": "CTA Timed Reveal",
+            "default": "0",
+            "info": "Use seconds. (For example, 5 minutes x 60 seconds = 300 seconds). Leave at 0 to disable timed reveal."
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Hero Section"
+      },
+      {
+        "type": "rich_text",
+        "label": "Text",
+        "id": "text",
+        "default": "<p>A Hero section is used to introduce visitors to the product or service the page is associated with. Large background images or videos with a disruptive Call To Action is recommended.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Section Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "radio",
+        "id": "type",
+        "label": "Type",
+        "default": "image",
+        "options": [
+          {"value": "image", "label": "Background Image"},
+          {"value": "video", "label": "Background Video"}
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image",
+        "info": "Suggested dimensions: 2880 × 1200"
+      },
+      {
+        "type": "video",
+        "id": "bg_video",
+        "label": "Background Video",
+        "info": "Video will play in the background of the seciton. Keep in mind the audio for this video will not be played."
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "overlay",
+        "allow_blank": true,
+        "info": "Will be used as overlay if settings for background image selected. Use Opacity slider."
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "allow_blank": true,
+        "info": "Text color will change automatically based on the brightness of your background color. Use this setting if you would like to override with a custom color."
+      },
+      {
+        "type": "radio",
+        "id": "alignment",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing",
+        "default": "large",
+        "options": [
+          { "label": "Extra Small", "value": "xs-small" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "category": "Content",
+        "blocks": [
+          { "type": "hero_cta" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

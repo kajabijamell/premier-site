@@ -1,0 +1,30 @@
+<!-- Block Variables -->
+{% assign b-Heading = block.settings.heading %}
+{% assign b-ShowTags = block.settings.show_tags %}
+{% assign b-ShowDate = block.settings.show_date %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Heading = 'heading' | settings_id: section: section, block: block %}
+{% assign kjb-b-ShowTags = 'show_tags' | settings_id: section: section, block: block %}
+{% assign kjb-b-ShowDate = 'show_date' | settings_id: section: section, block: block %}
+
+<div class="panel" kjb-settings-id="{{ kjb-b-Heading }}">
+  <div class="panel__body">
+    <p class="panel__heading panel__heading--light" kjb-settings-id="{{ kjb-b-Heading }}">{{ b-Heading }}</p>
+    {% for blog_post_sidebar in current_site.blog.posts_published limit:3 %}
+      <div class="recent-post">
+        <a href="{{ blog_post_sidebar.url }}" class="recent-post__title">{{ blog_post_sidebar.title }}</a>
+        {% if b-ShowTags %}
+          <div class="recent-post__tags" kjb-settings-id="{{ kjb-b-ShowTags }}">
+            {% for tag in blog_post_sidebar.tags %}
+              <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if b-ShowDate %}
+          <span class="recent-post__date" kjb-settings-id="{{ kjb-b-ShowDate }}">{{ blog_post_sidebar.created_at | date: "%b %d, 20%y" }}</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,303 @@
+<div class="panel blog fluid-video">
+  <div class="panel__body">
+    <h1 class="blog__title">{{ blog_post.title }}</h1>
+    <div class="blog__info">
+      {% if section.settings.show_tags %}
+        <span class="blog__tags" kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
+          {% if blog_post.tags.size > 0 %}
+            {% for tag in blog_post.tags %}
+              <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
+            {% endfor %}
+          {% else %}
+            Uncategorized
+          {% endif %}
+        </span>
+      {% endif %}
+      {% if section.settings.show_date %}
+        <span class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
+      {% endif %}
+      {% if settings.show_comments and settings.short_code != "" %}
+        <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
+      {% endif %}
+    </div>
+    {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
+    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: false %}
+    {{ blog_post.content }}
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'rich_cta' %}
+          {% include "rich_cta" %}
+        {% when 'panel_img' %}
+          {% include "panel_img" %}
+        {% when 'panel_opt_in' %}
+          {% include "panel_opt_in" %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+{% include "disqus" %}
+
+{% schema %}
+  {
+    "name": "Blog Post Body",
+    "blocks": [
+      {
+        "type": "panel_opt_in",
+        "name": "Opt In",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Opt In"
+          },
+          {
+            "type": "rich_text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<h2>Stay connected with news and updates!</h2><p>Join our mailing list to receive the latest news and updates from our team. You'r information will not be shared.</p>"
+          },
+          {
+            "type": "header",
+            "content": "Form",
+            "style": "subheading"
+          },
+          {
+            "type": "form",
+            "id": "form",
+            "label": "Form",
+            "info": "Select the form you wish to use on this Page.",
+            "default": "default"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text",
+            "default": "Submit"
+          },
+          {
+            "type": "header",
+            "content": "Form Appearance",
+            "style": "subheading"
+          },
+          {
+            "type": "radio",
+            "label": "Input Label",
+            "id": "style",
+            "default": "placeholder",
+            "options": [
+              { "label": "Placeholder", "value": "placeholder" },
+              { "label": "Label", "value": "label" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_style",
+            "label": "Button Style",
+            "default": "solid",
+            "options": [
+              { "label": "Solid", "value": "solid" },
+              { "label": "Outline", "value": "outline" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_width",
+            "label": "Button Width",
+            "default": "auto",
+            "options": [
+              { "label": "Auto", "value": "auto" },
+              { "label": "Full Width", "value": "block" }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "btn_background_color",
+            "label": "Button Color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "id": "btn_text_color",
+            "label": "Button Text Color",
+            "allow_blank": true,
+            "info": "For solid buttons only"
+          },
+          {
+            "type": "header",
+            "content": "Section Appearance",
+            "style": "subheading"
+          },
+          {
+            "type": "color",
+            "label": "Background Color Override",
+            "id": "background_color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "label": "Text Color Override",
+            "id": "text_color",
+            "allow_blank": true
+          }
+        ]
+      },
+      {
+        "type": "panel_img",
+        "name": "Image",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "width": 2300,
+            "height": 2300,
+            "info": "Suggested dimensions: 1856 × 1044"
+          },
+          {
+            "type": "action",
+            "id": "img_action",
+            "label": "Image Action",
+            "default": ""
+          },
+          {
+            "type": "checkbox",
+            "id": "link_target",
+            "label": "Open In New Window",
+            "default": "false"
+          }
+        ]
+      },
+      {
+        "type": "rich_cta",
+        "name": "Call To Action",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Call To Action"
+          },
+          {
+            "type": "rich_text",
+            "id": "content",
+            "label": "Content",
+            "default": "<h4>Stay connected with news and updates!</h4><p>Join our mailing list to receive the latest news and updates from our team.<br/>Don't worry, your information will not be shared.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_cta",
+            "label": "Show CTA",
+            "default": "true"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "CTA Text",
+            "default": "Subscribe"
+          },
+          {
+            "type": "action",
+            "id": "btn_action",
+            "label": "CTA Action",
+            "two_step": true,
+            "default": "http://www.kajabi.com"
+          },
+          {
+            "type": "checkbox",
+            "id": "btn_target",
+            "label": "Open In New Window",
+            "default": "false"
+          },
+          {
+            "type": "radio",
+            "id": "btn_style",
+            "label": "CTA Style",
+            "default": "solid",
+            "options": [
+              { "label": "Solid", "value": "solid" },
+              { "label": "Outline", "value": "outline" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_size",
+            "label": "CTA Size",
+            "default": "med",
+            "options": [
+              { "label": "Small", "value": "small" },
+              { "label": "Medium", "value": "med" },
+              { "label": "Large", "value": "large" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_width",
+            "label": "Button Width",
+            "default": "auto",
+            "options": [
+              { "label": "Auto", "value": "auto" },
+              { "label": "Full Width", "value": "block" }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "btn_background_color",
+            "label": "Button Color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "id": "btn_text_color",
+            "label": "Button Text Color",
+            "allow_blank": true,
+            "info": "For solid buttons only"
+          },
+          {
+            "type": "header",
+            "content": "Block Appearance",
+            "style": "subheading"
+          },
+          {
+            "type": "color",
+            "label": "Border Color Override",
+            "id": "border_color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "label": "Background Color Override",
+            "id": "background_color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "label": "Text Color Override",
+            "id": "text_color",
+            "allow_blank": true
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "checkbox",
+        "label": "Show Date",
+        "id": "show_date",
+        "default": "true"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Tags",
+        "id": "show_tags",
+        "default": "true"
+      },
+      {
+        "type": "color",
+        "label": "Video Player Color",
+        "id": "video_player_color",
+        "allow_blank": true
+      }
+    ]
+  }
+{% endschema %}

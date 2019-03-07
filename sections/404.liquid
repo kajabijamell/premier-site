@@ -1,0 +1,50 @@
+{% if section.settings.show_image %}
+  <div class="auth__img" kjb-settings-id="{{ 'image' | settings_id: section: section }}">
+    <img src="{{ section.settings.image | image_picker_url: 'placeholder.png'}}" />
+  </div>
+{% endif %}
+<div class="auth__404">
+  <h1 class="auth__404--title" kjb-settings-id="{{ '404_title' | settings_id: section: section }}">{{ section.settings.404_title }}</h1>
+  <p class="auth__404--text" kjb-settings-id="{{ '404_text' | settings_id: section: section }}">{{ section.settings.404_text }}</p>
+  <a href="/" class="auth__404--link" kjb-settings-id="{{ '404_link' | settings_id: section: section }}">{{ section.settings.404_link }}</a>
+</div>
+
+{% schema %}
+  {
+    "name": "404",
+    "elements": [
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show Image",
+        "default": "false"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "width": 720,
+        "height": 410,
+        "info": "Suggested dimensions: 720 × 410"
+      },
+      {
+        "type": "text",
+        "label": "404 Title",
+        "id": "404_title",
+        "default": "404"
+      },
+      {
+        "type": "text",
+        "label": "404 Text",
+        "id": "404_text",
+        "default": "We are sorry but the page you are looking for cannot be found."
+      },
+      {
+        "type": "text",
+        "label": "404 Link",
+        "id": "404_link",
+        "default": "BACK TO HOME"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,136 @@
+{% include "section_style", bgColor: settings.color_offset, vertAlign: "top" %}
+
+<div class="background-image background-image--{{ s-ID }}">
+  <div id="" class="section section--social_cards section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-AutoTextColor }} section--{{ s-ID }}" kjb-settings-id="{{ kjb-Background }}">
+    <div class="container">
+      {% include "section_heading" %}
+      <div class="row">
+        {% for block in section.blocks %}
+          {% assign block_color = block.settings.background_color | default: "#fff" %}
+          {% assign block_text_color = block.settings.text_color %}
+          <div class="col-sm-4">
+            <div class="section--social_cards__card section--{{ block_color | color_scheme_class }}" kjb-settings-id="{{ 'background_color' | settings_id: section: section, block: block }}" style="background: {{ block_color }};color:{{ block_text_color }};">
+              <h4 kjb-settings-id="{{ 'heading' | settings_id: section: section, block: block }}">{{ block.settings.heading }}</h4>
+              <div class="section--social_cards__code" kjb-settings-id="{{ 'embed' | settings_id: section: section, block: block }}">{{ block.settings.embed }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Social Widgets",
+    "blocks": [
+      {
+        "type": "social_card",
+        "name": "Social Widget",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Social Card"
+          },
+          {
+            "type": "text",
+            "label": "Heading",
+            "id": "heading",
+            "default": "Social Card"
+          },
+          {
+            "type": "textarea",
+            "label": "Embed Code",
+            "id": "embed",
+            "default": ""
+          },
+          {
+            "type": "header",
+            "content": "Block Appearance",
+            "style": "subheading"
+          },
+          {
+            "type": "color",
+            "label": "Background Color Override",
+            "id": "background_color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "label": "Text Color Override",
+            "id": "text_color",
+            "allow_blank": true
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": ""
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": ""
+      },
+      {
+        "type": "header",
+        "content": "Section Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "background_color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "allow_blank": true,
+        "info": "Text color will change automatically based on the brightness of your background color. Use this setting if you would like to override with a custom color."
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing",
+        "default": "medium",
+        "options": [
+          { "label": "Extra Small", "value": "xs-small" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Social Cards",
+        "category": "Content",
+        "blocks": [
+          { "type": "social_card",
+            "settings": {
+              "heading": "Facebook",
+              "embed": "<iframe src='https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fkajabi%2F&width=74&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId' width='74' height='21' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowTransparency='true'></iframe>"
+            }
+          },
+          { "type": "social_card", "settings": {
+              "heading": "Twitter",
+              "embed": "<a href='https://twitter.com/Kajabi' class='twitter-follow-button' data-show-count='false'>Follow @Kajabi</a><script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>"
+            }
+          },
+          { "type": "social_card", "settings": {
+              "heading": "Youtube",
+              "embed": "<script src='https://apis.google.com/js/platform.js'></script><div class='g-ytsubscribe' data-channel='kajabiapp' data-layout='default' data-count='default'></div>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

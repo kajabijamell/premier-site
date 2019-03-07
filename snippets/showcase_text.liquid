@@ -1,0 +1,6 @@
+<div class="btn__spacing--{{ section.settings.alignment }}" kjb-settings-id="{{ 'text' | settings_id: section: section }}" style="text-align: {{ section.settings.alignment }}">
+  {{ section.settings.text }}
+  {% for block in section.blocks %}
+    {% include "cta_block" %}
+  {% endfor %}
+</div>

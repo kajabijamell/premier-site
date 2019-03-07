@@ -1,0 +1,13 @@
+<div class="blog_post">
+  {% if section.settings.show_img %}
+    {% if post.image_url %}
+      <a href="{{ post.url }}"><img class="img-fluid" src="{{ post.image_url }}"></a>
+    {% else %}
+      <a href="{{ post.url }}"><img class="img-fluid" src="{{ 'placeholder.png' | asset_url }}"></a>
+    {% endif %}
+  {% endif %}
+  {% if section.settings.show_date %}
+    <h6 class="blog_post__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section, block: block }}"><em>{{ post.created_at | date: "%b %d, 20%y" }}</em></h6>
+  {% endif %}
+  <h4 class="blog_post__title"><a href="{{ post.url }}">{{ post.title | truncate: 70 }}</a></h4>
+</div>

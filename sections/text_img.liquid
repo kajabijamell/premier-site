@@ -1,0 +1,189 @@
+{% include "section_style", bgColor: "#fff", vertAlign: "middle" %}
+
+<div class="background-image background-image--{{ s-ID }}">
+  <div id="" class="section section--text_img section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-AutoTextColor }} section--{{ s-ID }}" kjb-settings-id="{{ kjb-Background }}">
+    <div class="container">
+      <div class="row">
+        {% if section.settings.position == "Right" %}
+          <div class="col-md-5">
+            {% include "text_img_text" %}
+          </div>
+          <div class="col-md-6 offset-md-1">
+            {% include "text_img_img" %}
+          </div>
+        {% else %}
+          <div class="col-md-6">
+            {% include "text_img_img" %}
+          </div>
+          <div class="col-md-5 offset-md-1">
+            {% include "text_img_text" %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text & Image",
+    "blocks": [
+      {
+        "type": "cta",
+        "name": "Call To Action",
+        "elements": [
+          {
+            "type": "header",
+            "content": "Call To Action"
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "CTA Text",
+            "default": "Call To Action"
+          },
+          {
+            "type": "action",
+            "id": "btn_action",
+            "label": "CTA Action",
+            "two_step": true,
+            "default": "http://www.kajabi.com"
+          },
+          {
+            "type": "checkbox",
+            "id": "btn_target",
+            "label": "Open In New Window",
+            "default": "false"
+          },
+          {
+            "type": "radio",
+            "id": "btn_style",
+            "label": "CTA Style",
+            "default": "solid",
+            "options": [
+              { "label": "Solid", "value": "solid" },
+              { "label": "Outline", "value": "outline" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_size",
+            "label": "CTA Size",
+            "default": "small",
+            "options": [
+              { "label": "Small", "value": "small" },
+              { "label": "Medium", "value": "med" },
+              { "label": "Large", "value": "large" }
+            ]
+          },
+          {
+            "type": "radio",
+            "id": "btn_width",
+            "label": "Button Width",
+            "default": "auto",
+            "options": [
+              { "label": "Auto", "value": "auto" },
+              { "label": "Full Width", "value": "block" }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "btn_background_color",
+            "label": "Button Color",
+            "allow_blank": true
+          },
+          {
+            "type": "color",
+            "id": "btn_text_color",
+            "label": "Button Text Color",
+            "allow_blank": true,
+            "info": "For solid buttons only"
+          },
+          {
+            "type": "text",
+            "id": "btn_Reveal",
+            "label": "CTA Timed Reveal",
+            "default": "0",
+            "info": "Use seconds. (For example, 5 minutes x 60 seconds = 300 seconds). Leave at 0 to disable timed reveal."
+          }
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "type": "rich_text",
+        "label": "Text",
+        "id": "text",
+        "default": "<h4>Text & Image</h4><p>Pair text with an image to call out a particular feature, benefit, or product. A common best practice is to stack multiple Text & Image sections in an alternating pattern.</p>"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "width": 1500,
+        "height": 1500,
+        "info": "Suggested dimensions: 1090 × 613"
+      },
+      {
+        "type": "header",
+        "content": "Section Appearance",
+        "style": "subheading"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "background_color",
+        "allow_blank": true
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "allow_blank": true,
+        "info": "Text color will change automatically based on the brightness of your background color. Use this setting if you would like to override with a custom color."
+      },
+      {
+        "type": "radio",
+        "label": "Image Position",
+        "id": "position",
+        "default": "Right",
+        "options": [
+          { "label": "Right", "value": "Right" },
+          { "label": "Left", "value": "Left" }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "alignment",
+        "label": "Text Alignment",
+        "default": "left",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing",
+        "default": "medium",
+        "options": [
+          { "label": "Extra Small", "value": "xs-small" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text & Image",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

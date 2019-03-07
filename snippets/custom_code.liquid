@@ -1,0 +1,9 @@
+<!-- Block Variables -->
+{% assign b-Code = block.settings.code %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Code = 'code' | settings_id: section: section, block: block %}
+
+<div kjb-settings-id="{{ kjb-b-Code }}">
+  {{ b-Code }}
+</div>

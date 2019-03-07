@@ -1,0 +1,468 @@
+{
+  "current": {
+    "content_for_index": [
+      "",
+      "1486164351980",
+      "1486164358488",
+      "1486164375314",
+      "1486164379908",
+      "1486164385762"
+    ],
+    "sections": {
+      "header": {
+        "settings": {
+          "show_header": "true",
+          "logo_type": "text",
+          "logo_text": "PREMIER",
+          "logo": "",
+          "header_height": "",
+          "show_menu": "true",
+          "menu": "main-menu",
+          "language_login": "Login",
+          "language_logout": "Logout",
+          "language_settings": "Settings",
+          "language_library": "My Library",
+          "background_color_user": "",
+          "text_color_user": "",
+          "show_header_announcement": "false",
+          "announcement_text": "Announcement",
+          "announcement_link": "",
+          "link_target": "false",
+          "announcement_color": "#2e91fc",
+          "announcement_text_color": "#fff",
+          "background_color": "",
+          "text_color": "",
+          "align_logo": "left"
+        },
+        "type": "header",
+        "hidden": "false",
+        "name": "Header"
+      },
+      "footer": {
+        "settings": {
+          "show_footer": "true",
+          "show_copyright": "true",
+          "copyright": "Kajabi",
+          "show_logo": "true",
+          "logo": "",
+          "show_menu": "true",
+          "menu": "footer",
+          "background_color": "#000000",
+          "text_color": "",
+          "align_logo": "left",
+          "show_social_icons": "true",
+          "social_icon_background_style": "social-icons--none",
+          "social_icon_alignment": "social-icons--left",
+          "social_icons_text_color": "",
+          "social_icons_background_color": "",
+          "social_icon_link_facebook": "https://www.facebook.com/kajabi",
+          "social_icon_link_twitter": "https://www.twitter.com/kajabi",
+          "social_icon_link_instagram": "https://www.instagram.com/kajabi/",
+          "social_icon_link_youtube": "",
+          "social_icon_link_pinterest": "",
+          "social_icon_link_google_plus": "",
+          "social_icon_link_vimeo": "",
+          "social_icon_link_github": "",
+          "social_icon_link_itunes": "",
+          "social_icon_link_linkedin": "",
+          "social_icon_link_soundcloud": "",
+          "social_icon_link_yelp": "",
+          "social_icon_link_tumblr": "",
+          "social_icon_link_slack": "",
+          "social_icon_link_flickr": "",
+          "social_icon_link_dribbble": ""
+        },
+        "type": "footer",
+        "hidden": "false",
+        "name": "Footer"
+      },
+      "pop_exit": {
+        "settings": {
+          "show": "false",
+          "enabled": "false",
+          "frequency": "10",
+          "show_img": "false",
+          "image": "",
+          "text": "<h1>Exit Pop</h1>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet.</p>",
+          "background_color": ""
+        },
+        "type": "pop_exit",
+        "hidden": "false",
+        "name": "Exit Popup"
+      },
+      "pop_two_step": {
+        "settings": {
+          "show": "false",
+          "form": "",
+          "thank_you_url": "",
+          "btn_text": "Submit",
+          "style": "placeholder",
+          "btn_style": "solid",
+          "btn_width": "auto",
+          "btn_background_color": "",
+          "btn_text_color": "",
+          "background_color": "",
+          "text_color": ""
+        },
+        "block_order": [
+          "1492725498873",
+          "1492725503624"
+        ],
+        "type": "pop_two_step",
+        "hidden": "false",
+        "name": "Two Step Optin",
+        "blocks": {
+          "1492725498873": {
+            "settings": {
+              "progress_percent": "50",
+              "progress_text": "% Complete",
+              "progress_background_color": "",
+              "progress_bar_color": ""
+            },
+            "type": "progress"
+          },
+          "1492725503624": {
+            "settings": {
+              "text": "<h3>Two Step</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+            },
+            "type": "text"
+          }
+        }
+      },
+      "1486164351980": {
+        "settings": {
+          "title": "Hero Section",
+          "text": "<p>A Hero section is used to introduce visitors to the product or service the page is associated with. Large background images or videos with a disruptive Call To Action is recommended.</p>",
+          "type": "image",
+          "bg_image": "",
+          "bg_video": "",
+          "overlay": "rgba(0,0,0,.5)",
+          "text_color": "",
+          "alignment": "center",
+          "spacing": "large"
+        },
+        "block_order": [
+          "1486164351980_0"
+        ],
+        "type": "hero",
+        "hidden": "false",
+        "name": "Hero",
+        "blocks": {
+          "1486164351980_0": {
+            "settings": {
+              "btn_text": "Call To Action",
+              "btn_action": "http://www.kajabi.com",
+              "btn_target": "false",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "auto",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "btn_Reveal": "0"
+            },
+            "type": "hero_cta"
+          }
+        }
+      },
+      "1486164358488": {
+        "settings": {
+          "heading": "",
+          "subheading": "",
+          "background_color": "",
+          "text_color": "",
+          "alignment": "center",
+          "spacing": "medium"
+        },
+        "block_order": [
+          "1486164358487_0",
+          "1486164358487_1",
+          "1486164358488_2"
+        ],
+        "type": "features",
+        "hidden": "false",
+        "name": "Features",
+        "blocks": {
+          "1486164358487_0": {
+            "settings": {
+              "show_image": "true",
+              "image": "",
+              "img_width": "",
+              "heading": "Add a title",
+              "text": "<p>Use this text to describe your feature in detail. Visitors enjoy reading well written, descriptive copy about specific features of your product.</p>",
+              "action_link": "",
+              "link_target": "false",
+              "show_cta": "false",
+              "btn_text": "Call To Action",
+              "btn_action": "http://www.kajabi.com",
+              "btn_target": "false",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "auto",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "btn_Reveal": "0"
+            },
+            "type": "feature"
+          },
+          "1486164358487_1": {
+            "settings": {
+              "show_image": "true",
+              "image": "",
+              "img_width": "",
+              "heading": "Add a title",
+              "text": "<p>Use this text to describe your feature in detail. Visitors enjoy reading well written, descriptive copy about specific features of your product.</p>",
+              "action_link": "",
+              "link_target": "false",
+              "show_cta": "false",
+              "btn_text": "Call To Action",
+              "btn_action": "http://www.kajabi.com",
+              "btn_target": "false",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "auto",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "btn_Reveal": "0"
+            },
+            "type": "feature"
+          },
+          "1486164358488_2": {
+            "settings": {
+              "show_image": "true",
+              "image": "",
+              "img_width": "",
+              "heading": "Add a title",
+              "text": "<p>Use this text to describe your feature in detail. Visitors enjoy reading well written, descriptive copy about specific features of your product.</p>",
+              "action_link": "",
+              "link_target": "false",
+              "show_cta": "false",
+              "btn_text": "Call To Action",
+              "btn_action": "http://www.kajabi.com",
+              "btn_target": "false",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "auto",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "btn_Reveal": "0"
+            },
+            "type": "feature"
+          }
+        }
+      },
+      "1486164375314": {
+        "settings": {
+          "text": "<h4>Text &amp; Image</h4>\r\n<p>Pair text with an image to call out a particular feature, benefit, or product. A common best practice is to stack multiple Text &amp; Image sections in an alternating pattern.</p>",
+          "image": "",
+          "background_color": "",
+          "text_color": "",
+          "position": "Right",
+          "alignment": "left",
+          "spacing": "xs-small"
+        },
+        "type": "text_img",
+        "hidden": "false",
+        "name": "Text & Image"
+      },
+      "1486164379908": {
+        "settings": {
+          "text": "<h4>Text &amp; Image</h4>\r\n<p>Pair text with an image to call out a particular feature, benefit, or product. A common best practice is to stack multiple Text &amp; Image sections in an alternating pattern.</p>",
+          "image": "",
+          "background_color": "",
+          "text_color": "",
+          "position": "Left",
+          "alignment": "left",
+          "spacing": "medium"
+        },
+        "type": "text_img",
+        "hidden": "false",
+        "name": "Text & Image"
+      },
+      "1486164385762": {
+        "settings": {
+          "heading": "Call To Action",
+          "subheading": "An instruction to the audience to provoke an immediate response, usually using an imperative verb such as buy now, find out more or visit a store today.",
+          "btn_text": "Call To Action",
+          "btn_action": "http://www.kajabi.com",
+          "btn_target": "false",
+          "btn_style": "solid",
+          "btn_size": "med",
+          "btn_width": "auto",
+          "btn_background_color": "",
+          "btn_text_color": "",
+          "btn_Reveal": "0",
+          "show_img": "true",
+          "bg_image": "",
+          "background_color": "",
+          "text_color": "",
+          "spacing": "medium"
+        },
+        "type": "cta",
+        "hidden": "false",
+        "name": "Call To Action"
+      },
+      "hero_blog": {
+        "settings": {
+          "show_hero": "false",
+          "title": "Blog",
+          "text": "",
+          "bg_image": "",
+          "overlay": "rgba(0,0,0,.5)",
+          "text_color": "#ffffff",
+          "alignment": "center",
+          "spacing": "medium"
+        },
+        "type": "hero_blog",
+        "hidden": "false",
+        "name": "Hero"
+      },
+      "blog_listing_body": {
+        "settings": {
+          "show_date": "true",
+          "show_tags": "true",
+          "video_player_color": "",
+          "truncate": "",
+          "read_more": "Continue Reading..."
+        },
+        "type": "blog_listing_body",
+        "hidden": "false",
+        "name": "Blog Listing Body"
+      },
+      "blog_sidebar": {
+        "settings": {
+          "show_sidebar": "true"
+        },
+        "block_order": [
+          "1486164421148",
+          "1486164426437",
+          "1486164430099"
+        ],
+        "type": "blog_sidebar",
+        "hidden": "false",
+        "name": "Blog Sidebar",
+        "blocks": {
+          "1486164421148": {
+            "settings": {
+              "content": "<h5>Stay connected with news and updates!</h5>",
+              "btn_text": "Subscribe",
+              "btn_action": "#two-step",
+              "btn_target": "false",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "block",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "background_color": "#e1e1e1",
+              "text_color": ""
+            },
+            "type": "sidebar_optin"
+          },
+          "1486164426437": {
+            "settings": {
+              "heading": "Filter By Project",
+              "all_tags": "All Projects"
+            },
+            "type": "categories"
+          },
+          "1486164430099": {
+            "settings": {
+              "heading": "Recent Posts",
+              "show_date": "true",
+              "show_tags": "true"
+            },
+            "type": "recent_posts"
+          }
+        }
+      },
+      "blog_post_body": {
+        "settings": {
+          "show_date": "true",
+          "show_tags": "true",
+          "video_player_color": ""
+        },
+        "block_order": [
+          "1486164488916"
+        ],
+        "type": "blog_post_body",
+        "blocks": {
+          "1486164488916": {
+            "settings": {
+              "content": "<h4>Stay connected with news and updates!</h4>\r\n<p>Join our mailing list to receive the latest news and updates from our team.<br />Don't worry, your information will not be shared.</p>",
+              "show_cta": "true",
+              "btn_text": "Subscribe",
+              "btn_action": "http://www.kajabi.com",
+              "btn_style": "solid",
+              "btn_size": "med",
+              "btn_width": "auto",
+              "btn_background_color": "",
+              "btn_text_color": "",
+              "border_color": "",
+              "background_color": "",
+              "text_color": ""
+            },
+            "type": "rich_cta"
+          }
+        }
+      },
+      "hero_library": {
+        "settings": {
+          "show_hero": "true",
+          "title": "Jay's Web Design and Marketing Tips",
+          "text": "",
+          "bg_image": "themes/290913/settings_images/mjjxcJ6TRuSMPqlxw0xq_tools-for-motivation-301199.jpg",
+          "overlay": "#000000",
+          "text_color": "#ffffff",
+          "alignment": "center",
+          "spacing": "medium"
+        },
+        "type": "hero_library",
+        "hidden": "false",
+        "name": "Hero"
+      },
+      "products": {
+        "settings": {
+          "heading": "My Courses",
+          "btn_text": "View Course",
+          "btn_style": "outline",
+          "btn_width": "block",
+          "btn_background_color": "#2a336d",
+          "btn_text_color": "#fff"
+        },
+        "type": "products",
+        "hidden": "false",
+        "name": "Products"
+      },
+      "sales_pages_library": {
+        "settings": {
+          "heading": "Recommended Courses"
+        },
+        "type": "sales_pages_library",
+        "hidden": "false",
+        "name": "Recommended Courses"
+      }
+    },
+    "text_color": "#000000",
+    "text_color_light": "#fff",
+    "font_family": "Open Sans",
+    "heading_font_family": "Montserrat",
+    "color_primary": "#2a336d",
+    "color_offset": "#f9f9f9",
+    "color_dark": "#30373e",
+    "color_darker": "#272d34",
+    "color_page_bg": "#f9f9f9",
+    "color_success": "#1abc9c",
+    "color_info": "#34495e",
+    "color_warning": "#f39c12",
+    "color_danger": "#e74c3c",
+    "recover_text": "Recover Password",
+    "email_text": "Email",
+    "recovery_text": "Send Recovery Info",
+    "login_text": "Login",
+    "reset_text": "Create new password",
+    "new_password": "Enter New Password",
+    "confirm_password": "Confirm Password",
+    "reset_btn": "Submit",
+    "show_comments": "false",
+    "short_code": ""
+  }
+}

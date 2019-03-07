@@ -1,0 +1,84 @@
+<!-- Block Variables -->
+{% assign b-ID            = block.id %}
+{% assign b-LinkColor     = block.settings.link_color | default: "#999" %}
+{% assign b-Facebook      = block.settings.social_facebook_url %}
+{% assign b-Twitter       = block.settings.social_twitter_url %}
+{% assign b-Instagram     = block.settings.social_instagram_url %}
+{% assign b-Linkedin      = block.settings.social_linkedin_url %}
+{% assign b-Google        = block.settings.social_googleplus_url %}
+{% assign b-Pinterest      = block.settings.social_pinterest_url %}
+{% assign b-Youtube       = block.settings.social_youtube_url %}
+{% assign b-Vimeo         = block.settings.social_vimeo_url %}
+{% assign b-Skype         = block.settings.social_skype_url %}
+{% assign b-Apple         = block.settings.social_itunes_url %}
+{% assign b-Dribbble       = block.settings.social_dribbble_url %}
+{% assign b-Flickr       = block.settings.social_flickr_url %}
+{% assign b-Github        = block.settings.social_github_url %}
+{% assign b-Vine          = block.settings.social_vine_url %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Facebook  = 'social_facebook_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Twitter   = 'social_twitter_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Instagram = 'social_instagram_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Linkedin  = 'social_linkedin_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Google    = 'social_googleplus_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Pinterest  = 'social_pinterest_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Youtube   = 'social_youtube_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Vimeo     = 'social_vimeo_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Skype     = 'social_skype_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Apple     = 'social_itunes_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Dribbble   = 'social_dribbble_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Flickr   = 'social_flickr_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Github    = 'social_github_url' | settings_id: section: section, block: block %}
+{% assign kjb-b-Vine      = 'social_vine_url' | settings_id: section: section, block: block %}
+
+<style>
+  .social--{{ b-ID }} .social__link {
+    color: {{ b-LinkColor }};
+  }
+</style>
+
+<div class="social social--{{ b-ID }}">
+  {% if b-Facebook and b-Facebook != '' %}
+    <a target="_blank" class="social__link fa fa-facebook" href="{{ b-Facebook }}" kjb-settings-id="{{ kjb-b-Facebook }}"></a>
+  {% endif %}
+  {% if b-Twitter and b-Twitter != '' %}
+    <a target="_blank" class="social__link fa fa-twitter" href="{{ b-Twitter }}" kjb-settings-id="{{ kjb-b-Twitter }}"></a>
+  {% endif %}
+  {% if b-Instagram and b-Instagram != '' %}
+    <a target="_blank" class="social__link fa fa-instagram" href="{{ b-Instagram }}" kjb-settings-id="{{ kjb-b-Instagram }}"></a>
+  {% endif %}
+  {% if b-Linkedin and b-Linkedin != '' %}
+    <a target="_blank" class="social__link fa fa-linkedin" href="{{ b-Linkedin }}" kjb-settings-id="{{ kjb-b-Linkedin }}"></a>
+  {% endif %}
+  {% if b-Google and b-Google != '' %}
+    <a target="_blank" class="social__link fa fa-google-plus" href="{{ b-Google }}" kjb-settings-id="{{ kjb-b-Google }}"></a>
+  {% endif %}
+  {% if b-Pinterest and b-Pinterest != '' %}
+    <a target="_blank" class="social__link fa fa-pinterest" href="{{ b-Pinterest }}" kjb-settings-id="{{ kjb-b-Pinterest }}"></a>
+  {% endif %}
+  {% if b-Youtube and b-Youtube != '' %}
+    <a target="_blank" class="social__link fa fa-youtube" href="{{ b-Youtube }}" kjb-settings-id="{{ kjb-b-Youtube }}"></a>
+  {% endif %}
+  {% if b-Vimeo and b-Vimeo != '' %}
+    <a target="_blank" class="social__link fa fa-vimeo-square" href="{{ b-Vimeo }}" kjb-settings-id="{{ kjb-b-Vimeo }}"></a>
+  {% endif %}
+  {% if b-Skype and b-Skype != '' %}
+    <a target="_blank" class="social__link fa fa-skype" href="{{ b-Skype }}" kjb-settings-id="{{ kjb-b-Skype }}"></a>
+  {% endif %}
+  {% if b-Apple and b-Apple != '' %}
+    <a target="_blank" class="social__link fa fa-apple" href="{{ b-Apple }}" kjb-settings-id="{{ kjb-b-Apple }}"></a>
+  {% endif %}
+  {% if b-Dribbble and b-Dribbble != '' %}
+    <a target="_blank" class="social__link fa fa-dribbble" href="{{ b-Dribbble }}" kjb-settings-id="{{ kjb-b-Dribbble }}"></a>
+  {% endif %}
+  {% if b-Flickr and b-Flickr != '' %}
+    <a target="_blank" class="social__link fa fa-flickr" href="{{ b-Flickr }}" kjb-settings-id="{{ kjb-b-Flickr }}"></a>
+  {% endif %}
+  {% if b-Github and b-Github != '' %}
+    <a target="_blank" class="social__link fa fa-github" href="{{ b-Github }}" kjb-settings-id="{{ kjb-b-Github }}"></a>
+  {% endif %}
+  {% if b-Vine and b-Vine != '' %}
+    <a target="_blank" class="social__link fa fa-vine" href="{{ b-Vine }}" kjb-settings-id="{{ kjb-b-Vine }}"></a>
+  {% endif %}
+</div>

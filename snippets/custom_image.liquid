@@ -1,0 +1,29 @@
+<!-- Block Variables -->
+{% assign b-Img        = block.settings.image | image_picker_url: 'placeholder.png' %}
+{% assign b-ImgAction  = block.settings.img_action %}
+{% assign b-Target     = block.settings.link_target %}
+{% if b-Target %}
+  {% assign b-Target   = "_blank" %}
+{% else %}
+  {% assign b-Target   = "" %}
+{% endif %}
+{% assign b-Width      = block.settings.img_width %}
+{% if b-Width != "" %}
+  {% assign b-Width    = b-Width | remove: "px" | append: "px" %}
+  <style>
+    .block--{{ block.id }} img {
+      width: {{ b-Width }};
+    }
+  </style>
+{% endif %}
+
+<!-- KJB Settings Variables -->
+{% assign kjb-b-Img = 'image' | settings_id: section: section, block: block %}
+
+{% if b-ImgAction == "" %}
+  <img src="{{ b-Img }}" class="img-fluid" kjb-settings-id="{{ kjb-b-Img }}"/>
+{% else %}
+  <a href="{{ b-ImgAction }}" target="{{ b-Target }}">
+    <img src="{{ b-Img }}" class="img-fluid" kjb-settings-id="{{ kjb-b-Img }}"/>
+  </a>
+{% endif %}

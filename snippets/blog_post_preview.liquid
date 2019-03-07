@@ -1,0 +1,30 @@
+<div class="panel blog fluid-video">
+  <div class="panel__body">
+    <h2 class="blog__title"><a href="{{ blog_post.url }}">{{ blog_post.title }}</a></h2>
+    <div class="blog__info">
+      {% if section.settings.show_tags %}
+        <span class="blog__tags" kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
+          {% if blog_post.tags.size > 0 %}
+            {% for tag in blog_post.tags %}
+              <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
+            {% endfor %}
+          {% else %}
+            Uncategorized
+          {% endif %}
+        </span>
+      {% endif %}
+      {% if section.settings.show_date %}
+        <span class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
+      {% endif %}
+      {% if settings.show_comments and settings.short_code != "" %}
+        <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
+      {% endif %}
+    </div>
+    {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
+    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: true %}
+    {% assign truncate_at = section.settings.truncate | default: 1000 %}
+    {% assign truncate_at_number = truncate_at | times: 1 %}
+    <div class="blog__conent">{{ blog_post.content | truncate_html: truncate_at_number }}</div>
+    <a class="blog__more" href="{{ blog_post.url }}" kjb-settings-id="{{ 'read_more' | settings_id: section: section, block: block }}">{{ section.settings.read_more }}</a>
+  </div>
+</div>
