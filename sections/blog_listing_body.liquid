@@ -1,6 +1,10 @@
 {% paginate blog_posts by 10 %}
   {% for blog_post in paginate.collection %}
+ {% if forloop.first == true %}
+     {% continue %}
+  {% else %}
     {% include "blog_post_preview" %}
+    {% endif %}
   {% endfor %}
   {% if paginate.pages > 1 %}
     {% include "pagination" %}

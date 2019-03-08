@@ -1,35 +1,79 @@
-{% if blog_post.video %}
-<div class="panel blog fluid-video">
-  <div class="panel__body">
-    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: true %}
-    <h2 class="blog__title"><a href="{{ blog_post.url }}">{{ blog_post.title }}</a></h2>
-    <div class="blog__info">
-      {% if section.settings.show_tags %}
-        <span class="blog__tags" kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
-          {% if blog_post.tags.size > 0 %}
-            {% for tag in blog_post.tags %}
-              <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
-            {% endfor %}
-          {% else %}
-            Uncategorized
-          {% endif %}
-        </span>
-      {% endif %}
-      {% if section.settings.show_date %}
-        <span class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
-      {% endif %}
-      {% if settings.show_comments and settings.short_code != "" %}
-        <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
-      {% endif %}
-    </div>
-    {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
-    <a class="blog__more" href="{{ blog_post.url }}" kjb-settings-id="{{ 'read_more' | settings_id: section: section, block: block }}">{{ section.settings.read_more }}</a>
-  </div>
-</div>
-{% else %}
+<style>
+  .blog-preview-img--{{ blog_post.id }} {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000), url({{ blog_post.image_url }});
+    height: 310px;
+    background-position: center;
+    background-size: cover;
+    transition: filter 200ms ease;
+    margin: 2rem auto;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+    .blog-preview-img--{{ blog_post.id }}:hover {
+      filter: brightness(110%);
+    }
+  .listing_preview {
+    text-align: left;
+    padding: 0;
+  }
+  .listing_preview a {
+    color: white;
+  }
+  .blog__title {
+    margin: 0;
+  }
+  .blog_preview_content {
+    padding: 20px;
+    align-self: flex-end;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+  }
+  .preview_content_wrap {
+    position: relative;
+  }
+  .blog__tags {
+    margin-right: 1rem;
+    font-size: 14px;
+    text-transform: capitalize;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    background: #eee;
+    padding: 10px;
+    border-radius: 30px;
+    }
+</style>
+
+<div class="preview_content_wrap">
 <a href="{{ blog_post.url }}">
-  <div class="blog-preview-img">
-    <img src="{{ blog_post.image_url }}" class="img-fluid"/>
+  <div class="blog-preview-img--{{ blog_post.id }}">
+  </div>
+    </a>
+    <div class="blog_preview_content">
+      <a href="{{ blog_post.url }}">
+      <h4 style="color:white;" class="blog__title">{{ blog_post.title }}</h4>
+    </a>
+      <div class="blog__info">
+        {% if settings.show_date %}
+          <span style="color:white;" class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
+        {% endif %}
+        {% if show_comments and settings.short_code != "" %}
+          <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
+        {% endif %}
+      </div>
     </div>
-  </a>
-{% endif %}
+    {% if settings.show_tags %}
+      <div kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
+        {% if blog_post.tags.size > 0 %}
+          {% for tag in blog_post.tags %}
+            <a class="blog__tags" href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
+          {% endfor %}
+        {% else %}
+        <a class="blog__tags" href="{{ current_site.url }}/blog">Uncategorized</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>

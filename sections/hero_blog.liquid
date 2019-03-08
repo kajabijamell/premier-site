@@ -1,10 +1,12 @@
 {% if section.settings.show_hero %}
+{% for blog_post in blog_posts limit:1 %}
   {% include "section_style_hero", vertAlign: "middle", defaultImg: "hero.jpg", defaultVideo: "aifhr9jyfk" %}
-
   <div class="hero-background background-image background-image--{{ s-ID }}">
     <div class="section section--hero section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-ID }}" kjb-settings-id="{{ 'overlay' | settings_id: section: section }}">
       <div class="container">
         <div class="row">
+          <div class="col-md-8">
+            {% include "hero_text" %}
           {% for tag in tags %}
             {% if tags.current == tag %}
               <h4>{{ tag }}</h4>
@@ -12,24 +14,10 @@
               <div style="display:none;"></div>
                 {% endif %}
           {% endfor %}
-          {% if section.settings.alignment == "left" %}
-            <div class="col-sm-6 text-xs-left btn__spacing btn__spacing--left">
-              {% include "hero_text" %}
-            </div>
-            <div class="col-sm-6">
-            </div>
-          {% elsif section.settings.alignment == "right" %}
-            <div class="col-sm-6">
-            </div>
-            <div class="col-sm-6 text-xs-left btn__spacing btn__spacing--left">
-              {% include "hero_text" %}
-            </div>
-          {% else %}
-            <div class="col-sm-10 text-xs-center btn__spacing btn__spacing--center">
-              {% include "hero_text" %}
-            </div>
-          {% endif %}
+            {% include "blog_post_preview" %}
+          {% endfor %}
         </div>
+      </div>
       </div>
     </div>
   </div>
