@@ -5,6 +5,13 @@
     <div class="section section--hero section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-ID }}" kjb-settings-id="{{ 'overlay' | settings_id: section: section }}">
       <div class="container">
         <div class="row">
+          {% for tag in tags %}
+            {% if tags.current == tag %}
+              <h4>{{ tag }}</h4>
+              {% else %}
+              <div style="display:none;"></div>
+                {% endif %}
+          {% endfor %}
           {% if section.settings.alignment == "left" %}
             <div class="col-sm-6 text-xs-left btn__spacing btn__spacing--left">
               {% include "hero_text" %}

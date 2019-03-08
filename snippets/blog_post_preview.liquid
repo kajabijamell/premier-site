@@ -1,5 +1,7 @@
+{% if blog_post.video %}
 <div class="panel blog fluid-video">
   <div class="panel__body">
+    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: true %}
     <h2 class="blog__title"><a href="{{ blog_post.url }}">{{ blog_post.title }}</a></h2>
     <div class="blog__info">
       {% if section.settings.show_tags %}
@@ -21,10 +23,9 @@
       {% endif %}
     </div>
     {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
-    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: true %}
-    {% assign truncate_at = section.settings.truncate | default: 1000 %}
-    {% assign truncate_at_number = truncate_at | times: 1 %}
-    <div class="blog__conent">{{ blog_post.content | truncate_html: truncate_at_number }}</div>
     <a class="blog__more" href="{{ blog_post.url }}" kjb-settings-id="{{ 'read_more' | settings_id: section: section, block: block }}">{{ section.settings.read_more }}</a>
   </div>
 </div>
+{% else %}
+    <img src="{{ blog_post.image_url }}" class="img-fluid"/>
+{% endif %}
