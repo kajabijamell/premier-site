@@ -1,5 +1,6 @@
 {% if section.settings.show_sidebar %}
   <div class="section__sidebar col-md-4">
+    <div class="fixed-side">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'custom_sidebar' %}
@@ -19,6 +20,7 @@
       {% endcase %}
     {% endfor %}
   </div>
+</div>
 {% else %}
   <style>
     .section__body {

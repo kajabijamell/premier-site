@@ -27,5 +27,9 @@
   </div>
 </div>
 {% else %}
+<a href="{{ blog_post.url }}">
+  <div class="blog-preview-img">
     <img src="{{ blog_post.image_url }}" class="img-fluid"/>
+    </div>
+  </a>
 {% endif %}
