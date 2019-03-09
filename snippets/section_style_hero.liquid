@@ -18,7 +18,7 @@
 <style>
   {% if section.settings.type != "video" %}
     .background-image--{{ s-ID }} {
-      background-image: url({{ blog_post.image_url }});
+      background-image: url({{ s-BgImage }});
     }
   {% endif %}
   .section--{{ s-ID }} {

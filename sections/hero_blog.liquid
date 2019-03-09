@@ -1,6 +1,6 @@
 {% if section.settings.show_hero %}
 {% for blog_post in blog_posts limit:1 %}
-  {% include "section_style_hero", vertAlign: "middle", defaultImg: "hero.jpg", defaultVideo: "aifhr9jyfk" %}
+  {% include "section_style_blog_hero", vertAlign: "middle", defaultImg: "hero.jpg", defaultVideo: "aifhr9jyfk" %}
   <div class="hero-background background-image background-image--{{ s-ID }}">
     <div class="section section--hero section--{{ s-VertAlign }} section--{{ s-Spacing }} section--{{ s-ID }}" kjb-settings-id="{{ 'overlay' | settings_id: section: section }}">
       <div class="container">
