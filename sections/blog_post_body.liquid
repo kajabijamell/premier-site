@@ -1,5 +1,11 @@
+<style media="screen">
+  .blog_post_body {
+    margin-top: -450px;
+  }
+</style>
+
 <div class="panel blog fluid-video">
-  <div class="panel__body">
+  <div class="panel__body blog_post_body">
     <h1 class="blog__title">{{ blog_post.title }}</h1>
     <div class="blog__info">
       {% if section.settings.show_tags %}
