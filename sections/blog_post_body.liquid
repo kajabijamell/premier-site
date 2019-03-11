@@ -1,34 +1,68 @@
-<style media="screen">
+<style>
   .blog_post_body {
-    margin-top: -450px;
+    margin-top: -500px;
+    padding: 0;
+  }
+  .blog_post_body_video {
+    margin-top: -550px;
+    padding: 0 !important;
+  }
+  .blog_post_content {
+    padding: 0px 100px 0px;
+  }
+  .blog-preview-img--{{ blog_post.id }} {
+    border-radius: 0 !important;
+  }
+  .blog_post_footer {
+    padding: 20px 100px;
+  }
+  .blog_post_video {
+    padding: 0 !important;
+  }
+  .blog {
+    box-shadow: 0 0 55px 0 rgba(0, 0, 0, .1);
+  }
+  .blog_video_info {
+    padding: 10px 60px 0;
   }
 </style>
 
 <div class="panel blog fluid-video">
-  <div class="panel__body blog_post_body">
-    <h1 class="blog__title">{{ blog_post.title }}</h1>
-    <div class="blog__info">
-      {% if section.settings.show_tags %}
-        <span class="blog__tags" kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
-          {% if blog_post.tags.size > 0 %}
-            {% for tag in blog_post.tags %}
-              <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
-            {% endfor %}
-          {% else %}
-            Uncategorized
-          {% endif %}
-        </span>
-      {% endif %}
-      {% if section.settings.show_date %}
-        <span class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
-      {% endif %}
-      {% if settings.show_comments and settings.short_code != "" %}
-        <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
-      {% endif %}
-    </div>
-    {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
-    {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: false %}
+  <div class="panel__body blog_post_body_video">
+    {% if blog_post.video %}
+      <div class="panel fluid-video">
+        <div class="panel__body blog_post_video">
+          {% assign videoColor = section.settings.video_player_color | default: settings.color_primary %}
+          {% include "video" with blog_post.video, color: videoColor, thumbnail: blog_post.image_url, link: true %}
+          <div class="blog_video_info">
+          <h2 class="blog__title"><a href="{{ blog_post.url }}">{{ blog_post.title }}</a></h2>
+            {% if section.settings.show_tags %}
+              <span class="blog__tags" kjb-settings-id="{{ 'show_tags' | settings_id: section: section }}">
+                {% if blog_post.tags.size > 0 %}
+                  {% for tag in blog_post.tags %}
+                    <a href="{{ current_site.url }}/blog?tag={{ tag | url_encode }}">{{ tag }}</a>
+                  {% endfor %}
+                {% else %}
+                  Uncategorized
+                {% endif %}
+              </span>
+            {% endif %}
+            {% if section.settings.show_date %}
+              <span class="blog__date" kjb-settings-id="{{ 'show_date' | settings_id: section: section }}">{{ blog_post.created_at | date: "%b %d, 20%y" }}</span>
+            {% endif %}
+            {% if settings.show_comments and settings.short_code != "" %}
+              <a class="blog__comment-count" href="{{ blog_post.url }}#disqus_thread" data-disqus-identifier="{{ blog_post.id }}"></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% include "blog_post_preview" %}
+    {% endif %}
+    <div class="blog_post_content">
     {{ blog_post.content }}
+  </div>
+    <div class="blog_post_footer">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'rich_cta' %}
@@ -39,6 +73,7 @@
           {% include "panel_opt_in" %}
       {% endcase %}
     {% endfor %}
+  </div>
   </div>
 </div>
 {% include "disqus" %}
